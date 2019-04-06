@@ -1,0 +1,51 @@
+{
+  "spider": "universal",
+  "rules": "qsbk",
+  "allowed_domains": ["www.qiushibaike.com"],
+  "start_urls": ["https://www.qiushibaike.com/text/"],
+  "type": "段子",
+  "index": "https://www.qiushibaike.com/",
+  "website": "糗事百科",
+  "item": {
+      "class": "QsbkItem",
+      "loader": "QsbkLoader",
+      "attrs": {
+        "title": [
+          {
+              "method": "xpath",
+              "args": ["//div[@class='col1 new-style-col1']/h1[@class='article-title']/text()"]
+          }
+        ],
+        "datetime": [
+          {
+              "method": "xpath",
+              "args": ["//div[@class='stats']/span[@class='stats-time']/text()"]
+          }
+        ],
+        "content": [
+          {
+              "method": "xpath",
+              "args": ["//div[@id='single-next-link']/div[@class='content']/text()"]
+          }
+        ],
+        "funny": [
+          {
+              "method": "xpath",
+              "args": ["//span[@class='stats-vote']/i[@class='number']/text()"]
+          }
+        ],
+        "url": [
+          {
+              "method": "attr",
+              "args": ["url"]
+          }
+        ],
+        "website": [
+          {
+              "method": "value",
+              "args": ["糗事百科"]
+          }
+        ]
+      }
+  }
+}
